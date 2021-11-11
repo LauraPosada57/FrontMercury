@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { UserContext } from 'context/userContext';
 import Index from 'pages/Index';
-import Page2 from 'pages/Page2';
-import IndexCategory1 from 'pages/category1/Index';
-import Category1 from 'pages/category1/CategoryPage1';
+import Usuarios from 'pages/Usuarios';
+import Perfil from 'pages/Perfil';
+import Inscripciones from 'pages/Inscripciones';
 import 'styles/globals.css';
+import Proyectos from 'pages/Proyectos';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -26,9 +27,10 @@ function App() {
           <Routes>
             <Route path='/' element={<PrivateLayout />}>
               <Route path='' element={<Index />} />
-              <Route path='page2' element={<Page2 />} />
-              <Route path='category1' element={<IndexCategory1 />} />
-              <Route path='category1/page1' element={<Category1 />} />
+              <Route path='Proyectos' element={<Proyectos />} />
+              <Route path='Usuarios' element={<Usuarios />} />
+              <Route path='Inscripciones' element={<Inscripciones />} />
+              <Route path='Perfil' element={<Perfil />} />
             </Route>
           </Routes>
         </BrowserRouter>

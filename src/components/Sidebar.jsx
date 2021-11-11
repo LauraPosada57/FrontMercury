@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom';
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>
-      <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
-      <SidebarRoute to='/page2' title='Pagina2' icon='fas fa-smile-wink' />
-      <SidebarRoute to='/category1' title='Catego 1' icon='fab fa-amazon' />
-      <SidebarRoute to='/category1/page1' title='Test' icon='fas fa-car' />
+      <SidebarRoute to='' title='Home' icon='fas fa-home' />
+      <SidebarRoute to='/Proyectos' title='Gestión Proyectos' icon='fas fa-project-diagram' />
+      <SidebarRoute to='/Usuarios' title='Gestión Usuarios' icon='fas fa-users' />
+      <SidebarRoute to='/Inscripciones' title='Gestión Inscripciones' icon='far fa-edit' />
+      <SidebarRoute to='/Perfil' title='Editar Perfil' icon='fas fa-user-cog' />
     </ul>
   );
 };
@@ -15,8 +16,7 @@ const SidebarLinks = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo.png' alt='Logo' className='h-16' />
-      <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
+      <img src='logo.png' alt='Logo' className='h-40' />
     </div>
   );
 };
