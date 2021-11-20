@@ -1,7 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import { useQuery } from "@apollo/client";
+import { GET_USERS } from "graphql/usuarios/queries";
 
 const Usuarios = () => {
+  const {data, error, loading} = useQuery(GET_USERS);
+
   let users_db = [
     {
       _id: "1",
@@ -93,29 +97,28 @@ const Usuarios = () => {
   return (
     <Fragment>
       {/* <NavbarComponent /> */}
-      <h1 className="text-center font-weight-bold">USUARIOS DEL SISTEMA</h1>
+      <h1 className='text-3xl font-extrabold text-gray-900 my-3 text-center'>USUARIOS DEL SISTEMA</h1>
       <br />
 
-      <div className="containerInput p-4">
+      <div className='rounded-md shadow-sm -space-y-px' >
         <label>
           <b>Buscar:</b>
         </label>
         <input
-          className="form-control inputBuscar mb-3"
+          className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
           value={busqueda}
           placeholder="Búsqueda por Identificación o Nombre"
           onChange={bChange}
         />
       </div>
 
-      <table className="table">
+      <table className="tabla">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Identificación</th>
+          <th scope="col">Identificación</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
             <th scope="col">Rol</th>
             <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
@@ -129,7 +132,8 @@ const Usuarios = () => {
                   .toString()
                   .toLowerCase()
                   .includes(busqueda.toLowerCase()) ||
-                user.name.toLowerCase().includes(busqueda.toLowerCase())
+                user.name.toLowerCase().includes(busqueda.toLowerCase()) ||
+                user.id_user.toLowerCase().includes(busqueda.toLowerCase())
               ) {
                 return user;
               }
@@ -137,18 +141,18 @@ const Usuarios = () => {
             .map((item) => {
               return (
                 <tr key={item._id}>
-                  <td>{item.email}</td>
                   <td>{item.id_user}</td>
                   <td>{item.name}</td>
                   <td>{item.last_name}</td>
+                  <td>{item.email}</td>
                   <td>{item.role}</td>
                   <td>{item.status}</td>
                   <td>
-                    <button onClick={() => seleccionarUsuario(item, "Editar")}>
+                    <button className='col-span-2 bg-blue-400 p-2 rounded-full shadow-md hover:bg-blue-600 text-white' onClick={() => seleccionarUsuario(item, "Editar")}>
                       Editar
                     </button>{" "}
                     {"   "}
-                    <button
+                    <button className='col-span-2 bg-red-400 p-2 rounded-full shadow-md hover:bg-red-600 text-white'
                       onClick={() => seleccionarUsuario(item, "Eliminar")}
                     >
                       Eliminar
