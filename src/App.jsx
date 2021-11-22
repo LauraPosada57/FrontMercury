@@ -5,7 +5,8 @@ import { UserContext } from "context/userContext";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client";
 import Index from "pages/Index";
 import Proyectos from "pages/Proyectos";
-import Usuarios from "pages/Usuarios";
+import Usuarios from "pages/usuarios/Usuarios";
+import EditarUsuario from "pages/usuarios/EditarUsuario";
 import Perfil from "pages/Perfil";
 import Inscripciones from "pages/Inscripciones";
 import "styles/globals.css";
@@ -36,6 +37,7 @@ function App() {
                 <Route path="" element={<Index />} />
                 <Route path="Proyectos" element={<Proyectos />} />
                 <Route path="Usuarios" element={<Usuarios />} />
+                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
                 <Route path="Inscripciones" element={<Inscripciones />} />
                 <Route path="Perfil" element={<Perfil />} />
               </Route>
